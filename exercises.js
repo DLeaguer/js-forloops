@@ -249,15 +249,23 @@ console.log('11. Go Long: ');
 var topQuote = 'Do or do not, there is no try.';
 
 function yodaQuote(quote){
-	for (var i=0; i<quote.length; i++){
+		var splitQuote = quote.split(" ");
+		// console.log(splitQuote); //list split across
+
+	for (var i=0; i<splitQuote.length; i++){
+		// splitQuote[i] += i;
+		// console.log(splitQuote[i]);
 		var newQuote = '';
-		if (quote[i].length > newQuote.length){
-		newQuote = quote[i];
+		if (splitQuote[i].length > newQuote.length){
+		newQuote = splitQuote[i];
 		console.log(newQuote);
+		console.log(splitQuote[i]);
 		}
-	}return newQuote;
+	}
+	// return newQuote;
 }
-console.log(yodaQuote(topQuote));
+yodaQuote(topQuote);
+// console.log(yodaQuote(topQuote));
 
 
 
@@ -276,8 +284,9 @@ var miscStorage = [ [], 'Carrots', 9, 'Beets', {}, {name: "Todd B."}, 'Mush' ];
 
 function generateArrayOfStrings(storage){
 	for (var i=0; i<storage.length; i++){
-		if (typeof storage[i] !== typeof ''){
-			(storage.splice(i, 1));
+		if (typeof storage[i] === typeof ''){
+		//	(storage.splice(i, 0));
+			storage.push(i);
 			console.log(storage[i]);
 		}
 	}
@@ -287,10 +296,25 @@ generateArrayOfStrings(miscStorage);
 /* 13) All Grown Up 
 Write a function that will capitalize the first letter in each word in the phrase below. The function will console.log the message: "I've Lived A Life That's Full. I've Traveled Each And Every Highway. But More, Much More Than This. I Did It My Way."  
 */
+console.log('');
+console.log('13. All Grown Up: ');
 
 var myWay = "i've lived a life that's full, i've traveled each and every highway. but more, much more than this. i did it my way.";
 
-
+function capFirst(caps){
+	var word = caps.split(" ");
+	// console.log(word);
+	for (var i=0; i<word.length; i++){
+		// console.log(word[i]);
+		var letter = word[i].split("");
+		// console.log(letter);
+		letter[0] = letter[0].toUpperCase();
+		console.log(letter);
+		letter.toString();
+	}
+	console.log(caps)
+}
+capFirst(myWay);
 
 /* 14) Sightseeing
 Write a function that will loop through the multi-dimensional array and console.log the city and landmark on separate lines.
@@ -299,7 +323,25 @@ Note, please use two for loops to complete this problem
   @param Datatype: Array
   */
 
+console.log('');
+console.log('14. Sightseeing: ');
+
 var guide = [["Honolulu", "Waikiki"], ["Tokyo", "Tsukiji Fish Market"], ["Cairo", "Pyramids"],["Rome", "Colosseum"]];
+
+// var cities = "";
+// var places = "";
+// console.log(guide[0][0]);
+
+
+function cityPlace(city){
+	for (var i = 0; i < city.length; i++){
+		console.log(city[i][0]);
+	}
+	for (var j = 0; j < city.length; j++){
+		console.log(city[j][1]);
+	}
+}
+cityPlace(guide);
 
 
 
@@ -313,4 +355,5 @@ The function will iterate through the `cohort` argument and check each student's
 If the `enrolled` property is set to `true` then change that student's `graduated` property to `true`. Otherwise, if `enrolled` is set to `false` then change `enrolled` to `true` leaving `graduated` alone and unchanged.
 Console.log your result.
 */
+
 
