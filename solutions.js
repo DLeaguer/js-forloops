@@ -262,6 +262,7 @@ function capitalize(str){
     letter[0] = letter[0].toUpperCase();
     //console.log(letter);
     word[i] = letter.join('');
+    console.log(word[i]);
   }
   return word.join(" ");
 }
