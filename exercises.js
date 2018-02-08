@@ -125,6 +125,7 @@ turn
 // var arrOops = [];
 for (var i=oopsArray.length-1; i>=0; i--){
 	// arrOops.push(oopsArray[i]);
+	// arrOops += oopsArray[i] + ', ';
 	console.log(oopsArray[i]);
 }
 // console.log(arrOops);
@@ -179,25 +180,20 @@ console.log(copyValuesArray);
 Declare a variable named `topQuote` and assign it to a String value of your favorite one line quote.
 Write a function that will iterate through the string value and return the longest word in that quote. Console.log your result.
 */
-var topQuote = 'Do or do not, there is no try.';
-function yoda(quote){
-		var strToArr = quote.split(' ');
-		// console.log(strToArr);
-		// console.log(strToArr[5]);
-		var currentWord = '';
-	for (var i=0; i<strToArr.length; i++){
-		// console.log(quote[i]);
-		// console.log(strToArr[i]);
-		if (strToArr[i].length > currentWord.length){
-			currentWord = strToArr[i];
-			// console.log(strToArr[i]);
+var topQuote = 'Do or do not, there is no try';
+function longestWord(str){
+	var arr = str.split(' ');
+	var currentWord = [];
+	for (var i=0; i<arr.length; i++){
+		if (arr[i].length > currentWord.length){
+			currentWord = arr[i];
+			console.log(currentWord);
 		}
 	}
 	// console.log(currentWord);
 	return currentWord;
 }
-console.log(yoda(topQuote));
-
+console.log(longestWord(topQuote));
 /* 12) Puppet Master
 Declare a variable named `miscStorage` set it's value to be: `[ [], 'Carrots', 9, 'Beets', {}, {name: "Todd B."}, 'Mush' ]`
 Write a function named `generateArrayOfStrings` which takes a single argument `storage`. This function will return a new Array with only `String` values inside of it.
@@ -208,16 +204,17 @@ Write a function named `generateArrayOfStrings` which takes a single argument `s
 */
 var miscStorage = [ [], 'Carrots', 9, 'Beets', {}, {name: "Todd B."}, 'Mush' ];
 function generateArrayOfStrings(storage){
-	var newArr = [];
+	var arrStr = [];
 	for (var i=0; i<storage.length; i++){
 		// console.log(storage[i]);
 		if (typeof storage[i] === typeof ''){
-			console.log(storage[i]);
-			newArr.push(storage[i]);
+			// arrStr += storage[i] + ', ';
+			arrStr.push(storage[i] + ', ');
+			// console.log(arrStr);
 		}
 	}
-	console.log(newArr);
-	return newArr;
+	// console.log(arrStr);
+	return arrStr;
 }
 console.log(generateArrayOfStrings(miscStorage));
 
@@ -226,25 +223,18 @@ Write a function that will capitalize the first letter in each word in the phras
 */
 
 var myWay = "i've lived a life that's full, i've traveled each and every highway. but more, much more than this. i did it my way.";
-function capfirst(quote){
-	var word = myWay.split(' ');
+function capFirstLetters(str){  
+	var word = str.split(" ");
 	// console.log(word);
+	var firstLetter = [];
 	for (var i=0; i<word.length; i++){
-		// console.log(word[10]); //every
-		var letter = word[i].split('');
-		// console.log(letter[0]); //first letter's of word[i]'s
-		letter[0] = letter[0].toUpperCase();
-		// console.log(letter[0] = letter[0].toUpperCase());
-		// console.log(letter);
-		word[i] = letter.join('');
-		console.log(word[i]);
-		console.log(word);
+		// console.log(word[i][0]);
+		firstLetter += word[i][0].toUpperCase() + word[i].slice(1) + ' ';
 	}
-	console.log(word.join(' '));
-	return word.join(' ');
+	// console.log(firstLetter);
+	return firstLetter;
 }
-// capfirst(myWay);
-console.log(capfirst(myWay));
+console.log(capFirstLetters(myWay));
 
 /* 14) Sightseeing
 Write a function that will loop through the multi-dimensional array and console.log the city and landmark on separate lines.
@@ -254,18 +244,18 @@ Note, please use two for loops to complete this problem
   */
 
 var guide = [["Honolulu", "Waikiki"], ["Tokyo", "Tsukiji Fish Market"], ["Cairo", "Pyramids"],["Rome", "Colosseum"]];
-function sightseeing(tour){
-	var city = [];
-	var landmark = [];
-	for (var i=0; i<tour.length; i++){
-		// console.log(tour[i][0]);
-		city.push(tour[i][0]);
-	}	
-	for (var j=0; j<tour.length; j++){
-		// console.log(tour[j][1]);
-		landmark.push(tour[j][1]);	
+function sightseeing(arr){
+	// console.log(arr[0][1]);
+	var city = '';
+	var landmark = '';
+	for (var i=0; i<arr.length; i++){
+		console.log(arr[i][0]);
+		city += arr[i][0] + ', ';
 	}
 	console.log(city);
+	for (var j=0; j<arr.length; j++){
+		landmark += arr[j][1] + ', ';
+	}
 	console.log(landmark);
 }
 sightseeing(guide);
@@ -328,5 +318,4 @@ function graduateAndSetNewClass(cohort){
 	// console.log(cohort);
 	return cohort;
 }
-graduateAndSetNewClass(currentCohort);
-console.log(currentCohort);
+console.log(graduateAndSetNewClass(currentCohort));
